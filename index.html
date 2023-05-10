@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>아동급식카드 가맹점 검색사이트</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <!--
+            <link rel="stylesheet" href="mystyle.css">
+        -->
+    </head>
+    <body>
+        <div style="text-align: center">
+            <h1>MyCFC</h1>
+            <p>아동급식카드 가맹점을 찾아봐요!</p>
+            <br>
+            <br>
+            <br>
+            <form action="check.php" method="post">
+                <label>지역을 선택하세요</label>
+                <select id="gu" onchange="changeDong()">
+                    <option value="" selected disabled>구를 선택해주세요</option>
+                    <option value="완산구">완산구</option>
+                    <option value="덕진구">덕진구</option>
+                </select>
+                <select id="dong">
+                    <option value="" selected disabled>동을 선택해주세요</option>
+                </select>
+                
+                <input type="submit" value="검색">
+            </form>
+            <script>
+                function changeDong() {
+                    var selectGu = $("#gu").val();
+                    var change;
+                    
+                    var deokjinGu = ["진북동","인후1동","인후2동","인후3동","덕진동", "금암1동", "금암2동", "팔복동", "우아1동", "우아2동", "호성동", "송천1동", "송천2동", "조촌동", "여의동", "혁신동"];
+                    var wansanGu = ["중앙동","풍남동","노송동","완산동","동서학동", "서서학동", "중화산1동", "중화산2동", "서신동", "삼천1동", "삼천2동", "삼천3동", "효자1동", "효자2동", "효자3동", "효자4동", "효자5동"];
+    
+                    if(selectGu == "완산구") {
+                        change = wansanGu;
+                    }
+                    else if (selectGu == "덕진구") {
+                        change = deokjinGu;
+                    }
+    
+                    $("#dong").empty();
+    
+                    for(var count = 0; count < change.length; count++) {
+                        $("#dong").append($("<option>"+change[count]+"</option>"));
+                    }
+                }
+            </script>
+        </div>
+    </body>
+</html>
